@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { CashFlow } from '../shared-expenses-manager/interfaces/cash-flow.interface';
+;import { Component, OnInit } from '@angular/core';
+import { CashFlowCollection } from '../shared-expenses-manager/models/cash-flow-collection/cash-flow-collection.model';
 import { Expense } from '../shared-expenses-manager/models/expense/expense.model';
 import { CashFlowService } from '../shared-expenses-manager/services/cash-flow/cash-flow.service';
 
@@ -9,7 +9,8 @@ import { CashFlowService } from '../shared-expenses-manager/services/cash-flow/c
   styleUrls: ['./graph.page.scss'],
 })
 export class GraphPage implements OnInit {
-  cashFlows: CashFlow[];
+  private cashFlows: CashFlowCollection;
+  expenses: Expense[];
   totalExpenses: number = 0;
   constructor(private cashFlowService: CashFlowService) {}
 
@@ -17,11 +18,7 @@ export class GraphPage implements OnInit {
 
   ionViewWillEnter() {
     this.cashFlows = this.cashFlowService.getTestCashFlows();
-
-    this.cashFlows.forEach((cashFlow) => {
-      if (cashFlow instanceof Expense) {
-        this.totalExpenses += cashFlow.amount;
-      }
-    })
+    this.expenses = this.cashFlows.getExpenses();
+    this.totalExpenses = this.cashFlows.totalExpenses();
   }
 }
