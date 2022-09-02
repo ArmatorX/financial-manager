@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CashFlowCollection } from '../../models/cash-flow-collection/cash-flow-collection.model';
-import { TestCashFlowRepo } from '../../models/test-cash-flow-repo/test-cash-flow-repo.model';
+import { FakeCashFlowCollectionFactory } from '../../factories/fake-cash-flow-collection-factory/fake-cash-flow-collection.factory';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CashFlowService {
+  constructor(private factory: FakeCashFlowCollectionFactory) { }
 
-  constructor() { }
-
-  getTestCashFlows() {
-    return new CashFlowCollection(...new TestCashFlowRepo().values());
+  getTestCashFlows(): CashFlowCollection {
+    return this.factory.create();
   }
 }
