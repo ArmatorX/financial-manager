@@ -1,4 +1,5 @@
 ;import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../authentication/shared-authentication/services/auth/auth.service';
 import { CashFlowCollection } from '../shared-expenses-manager/models/cash-flow-collection/cash-flow-collection.model';
 import { Expense } from '../shared-expenses-manager/models/expense/expense.model';
 import { CashFlowService } from '../shared-expenses-manager/services/cash-flow/cash-flow.service';
@@ -12,7 +13,7 @@ export class GraphPage implements OnInit {
   private cashFlows: CashFlowCollection;
   expenses: Expense[];
   totalExpenses: number = 0;
-  constructor(private cashFlowService: CashFlowService) {}
+  constructor(private cashFlowService: CashFlowService, private auth: AuthService) {}
 
   ngOnInit() {}
 

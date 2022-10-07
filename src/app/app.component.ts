@@ -1,19 +1,18 @@
-import { Component } from '@angular/core';
-import { initializeApp } from "firebase/app";
-import { environment } from 'src/environments/environment';
+import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from './shared/services/firebase/firebase.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit  {
   public appTabs = [
     { title: 'Gráfico', url: '/graph', icon: 'podium' },
   ];
-  constructor() {}
+  constructor(private firebase: FirebaseService) {}
 
-  ionViewWillEnter() { 
-    const app = initializeApp(environment.firebaseConfig);
+  ngOnInit() {
+    this.firebase.initialize();
   }
 }

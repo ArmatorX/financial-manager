@@ -1,22 +1,27 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './shared/guards/auth/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'graph',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'graph',
-    loadChildren: () => import('./modules/expenses-manager/graph/graph.module').then( m => m.GraphPageModule)
-  }
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/expenses-manager/graph/graph.module').then(
+        (m) => m.GraphPageModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
