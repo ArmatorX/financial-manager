@@ -2,18 +2,21 @@ import { Category } from "../interfaces/category.interface";
 
 export const CATEGORIES: Category[] = [
     {
-        id: 1,
+        // id: 1,
         name: 'Servicios',
-        iconName: 'home'
+        iconName: 'home',
+        color: "#ff2e2e"
     },
     {
-        id: 2,
+        // id: 2,
         name: 'Delivery',
-        iconName: 'fast-food'
+        iconName: 'fast-food',
+        color: "#ff2e2e"
     },
     {
-        id: 3,
+        // id: 3,
         name: 'Regalos',
-        iconName: 'gift'
+        iconName: 'gift',
+        color: "#ff2e2e"
     },
 ]

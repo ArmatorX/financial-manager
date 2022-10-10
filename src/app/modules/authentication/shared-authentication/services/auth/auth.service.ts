@@ -19,9 +19,9 @@ export class AuthService {
   user$: Observable<User>;
   constructor() {}
 
-  async initialize() {
+  initialize() {
     this.auth = getAuth();
-    this.user$ = new Observable(obs => this.auth.onAuthStateChanged(obs))
+    this.user$ = new Observable(obs => this.auth.onAuthStateChanged(obs));
   }
 
   signInWithGoogle(): Promise<UserCredential> {
