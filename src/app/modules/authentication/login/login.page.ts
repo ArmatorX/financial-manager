@@ -15,6 +15,6 @@ export class LoginPage implements OnInit {
   }
 
   signInWithGoogle() {
-    this.auth.signInWithGoogle().then(() => this.navController.navigateRoot(["/graph"]));
+    this.auth.signInWithGoogle().then(() => this.navController.navigateRoot(["/expenses/graph"]));
   }
 }

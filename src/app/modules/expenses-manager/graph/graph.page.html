@@ -12,6 +12,11 @@
     <div>
       {{ totalExpenses | currency }}
     </div>
+    <div>
+      <ion-button name="go-to-create-cash-flow" (click)="this.goToCreateCashFlow()">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-button>
+    </div>
     <ion-list>
       <ion-item *ngFor="let cashFlow of this.expenses">
         <ion-col>{{ cashFlow.amount | currency }}</ion-col>

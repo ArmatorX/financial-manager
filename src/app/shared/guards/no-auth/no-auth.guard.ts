@@ -22,7 +22,7 @@ export class NoAuthGuard implements CanActivate {
   
   checkIfLoggedIn(isLoggedIn: boolean) {
     if (isLoggedIn) {
-      this.navController.navigateRoot(["/graph"]);
+      this.navController.navigateRoot(["/expenses/graph"]);
     }
 
     return !isLoggedIn;

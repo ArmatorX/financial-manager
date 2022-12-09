@@ -1,4 +1,5 @@
 ;import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 import { AuthService } from '../../authentication/shared-authentication/services/auth/auth.service';
 import { CashFlowCollection } from '../shared-expenses-manager/models/cash-flow-collection/cash-flow-collection.model';
 import { Expense } from '../shared-expenses-manager/models/expense/expense.model';
@@ -14,7 +15,7 @@ export class GraphPage implements OnInit {
   private cashFlows: CashFlowCollection;
   expenses: Expense[];
   totalExpenses: number = 0;
-  constructor(private cashFlowService: CashFlowService, private categoriesService: CategoriesService) {}
+  constructor(private cashFlowService: CashFlowService, private navController: NavController) {}
 
   ngOnInit() {}
 
@@ -22,8 +23,9 @@ export class GraphPage implements OnInit {
     this.cashFlows = this.cashFlowService.getTestCashFlows();
     this.expenses = this.cashFlows.getExpenses();
     this.totalExpenses = this.cashFlows.totalExpenses();
-    this.categoriesService.getAllCategories().then((data) => {
-      console.log(data);
-    });
+  }
+
+  goToCreateCashFlow() {
+    this.navController.navigateForward(['/expenses/create']);
   }
 }

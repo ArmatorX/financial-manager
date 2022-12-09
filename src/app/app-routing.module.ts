@@ -5,22 +5,14 @@ import { AuthGuard } from './shared/guards/auth/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'graph',
+    redirectTo: '/auth/login',
     pathMatch: 'full',
-  },
-  {
-    path: 'graph',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./modules/expenses-manager/graph/graph.module').then(
-        (m) => m.GraphPageModule
-      ),
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules/*, relativeLinkResolution: 'legacy' */}),
   ],
   exports: [RouterModule],
 })

@@ -8,7 +8,7 @@ import { FirebaseService } from './shared/services/firebase/firebase.service';
 })
 export class AppComponent implements OnInit  {
   public appTabs = [
-    { title: 'Gráfico', url: '/graph', icon: 'podium' },
+    { title: 'Gráfico', url: '/expenses/graph', icon: 'podium' },
   ];
   constructor(private firebase: FirebaseService) {}
 

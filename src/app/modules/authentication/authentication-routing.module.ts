@@ -8,7 +8,7 @@ const routes: Routes = [
     children: [
       {
         path: 'login',
-        canActivate: [NoAuthGuard],
+        // canActivate: [NoAuthGuard], // TODO: This guard is not working properly
         loadChildren: () =>
           import('./login/login.module').then((m) => m.LoginPageModule),
       },
