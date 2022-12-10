@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/expenses/graph"></ion-back-button>
+    </ion-buttons>
     <ion-title>Añadir gasto</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div class="create-form ion-padding">
+    <form>
+      <ion-item>
+        <ion-label>*Monto:</ion-label>
+        <ion-input [autofocus]="true" type="number" ></ion-input>
+        <ion-note slot="error">Debe ingresar un monto.</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>*Fecha del gasto:</ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime" presentation="date">
+              <ion-buttons slot="buttons">
+                <ion-button color="primary" (click)="this.pickDate('today')"
+                  >Hoy</ion-button
+                >
+                <ion-button color="primary" (click)="this.pickDate('tomorrow')"
+                  >Mañana</ion-button
+                >
+              </ion-buttons>
+            </ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+      <ion-item>
+        <ion-label>Comentario:</ion-label>
+        <ion-input></ion-input>
+      </ion-item>
+    </form>
+  </div>
 </ion-content>
